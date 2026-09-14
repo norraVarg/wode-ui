@@ -1,0 +1,8 @@
+dist
+node_modules
+pnpm-lock.yaml
+.ladle/build
+coverage
+playwright-report
+test-results
+CHANGELOG.md
