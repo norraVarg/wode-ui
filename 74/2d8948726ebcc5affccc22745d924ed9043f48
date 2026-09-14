@@ -1,0 +1,39 @@
+.prettierrc.json
+  s_6f5fd009c6edc1::t_71f0373ec653ae 5-7
+package.json
+  s_6f5fd009c6edc1::t_2c376a0bbcf23e 37,40
+pnpm-lock.yaml
+  s_6f5fd009c6edc1::t_9882836fe5c17d 44-46,53-55,972-1026,1163-1165,2401-2404,2601-2602
+src/styles/index.css
+  s_6f5fd009c6edc1::t_ca9b01031b79d4 1-3
+src/styles/themes/dark.css
+  s_6f5fd009c6edc1::t_12ea02f9f3d222 1-11
+src/styles/tokens.css
+  s_6f5fd009c6edc1::t_431886d4cf9827 1-15
+src/theme/ThemeProvider.tsx
+  s_6f5fd009c6edc1::t_317deb2f73b607 1-114
+src/theme/index.ts
+  s_6f5fd009c6edc1::t_48508a33d30b10 1-5
+src/theme/themes.ts
+  s_6f5fd009c6edc1::t_029b589ed3ad63 1-9
+src/theme/types.ts
+  s_6f5fd009c6edc1::t_6023b6866f38a1 1-9
+src/theme/useTheme.ts
+  s_6f5fd009c6edc1::t_80c6fe619ef33b 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "742d8948726ebcc5affccc22745d924ed9043f48",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <yue.wang@qred.com>"
+    }
+  }
+}
