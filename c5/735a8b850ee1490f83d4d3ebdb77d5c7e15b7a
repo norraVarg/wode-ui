@@ -1,0 +1,29 @@
+.prettierignore
+  s_6f5fd009c6edc1::t_56285686b5387e 1-8
+.prettierrc.json
+  s_6f5fd009c6edc1::t_55dd580a6cbd90 1-6
+eslint.config.js
+  s_6f5fd009c6edc1::t_73b9db78458f32 1-61
+package.json
+  s_6f5fd009c6edc1::t_b228c8bf5cdc66 15-19,26,30-36,39-40
+pnpm-lock.yaml
+  s_6f5fd009c6edc1::t_a4530c81aa58f1 11-13,23-43,51-55,59-224,236-409,414-431,433-436,438-450,453-461,463-508,510-511,513-517,519-523,525-529,531-533,535-537,539-541,543-551,553-555,557-559,561-563,565-567,569-571,573-574,576-577,579-580,582-589,591-592,594-596,598-599,601-602,604-606,608-609,611-613,615-616,618-620,622-624,626-628,630-632,634-636,638-640,642-2666
+tsconfig.build.json
+  s_6f5fd009c6edc1::t_2de3ad5ac47795 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c5735a8b850ee1490f83d4d3ebdb77d5c7e15b7a",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <yue.wang@qred.com>"
+    }
+  }
+}
