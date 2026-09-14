@@ -1,0 +1,15 @@
+@theme {
+  --color-bg: oklch(100% 0 0);
+  --color-fg: oklch(20% 0 0);
+  --color-accent: oklch(58% 0.18 259);
+  --color-accent-fg: oklch(98% 0 0);
+  --color-border: oklch(90% 0 0);
+  --color-muted: oklch(96% 0 0);
+  --color-muted-fg: oklch(45% 0 0);
+  --color-danger: oklch(58% 0.22 27);
+  --color-success: oklch(62% 0.17 145);
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+}
