@@ -1,0 +1,31 @@
+.gitignore
+  s_6f5fd009c6edc1::t_73cd553e49365b 1-24
+LICENSE
+  s_6f5fd009c6edc1::t_142f7b8b4730cf 1-21
+README.md
+  s_6f5fd009c6edc1::t_20389f068bbb76 1-19
+package.json
+  s_6f5fd009c6edc1::t_34332df1788511 1-29
+pnpm-lock.yaml
+  s_6f5fd009c6edc1::t_da03cb08f823d9 1-294
+tsconfig.build.json
+  s_6f5fd009c6edc1::t_8c8d75c690cfe8 1-13
+tsconfig.json
+  s_6f5fd009c6edc1::t_0eb2c07b38f50c 1-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c1afc2eefb5e05e05acba5a58c050c945ee93769",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <yue.wang@qred.com>"
+    }
+  }
+}
