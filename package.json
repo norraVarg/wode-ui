@@ -4,6 +4,7 @@
   "description": "A mobile-first React component library built on Base UI and Tailwind CSS, with built-in light/dark theming.",
   "type": "module",
   "license": "MIT",
+  "packageManager": "pnpm@12.4.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/norraVarg/wode-ui.git"
