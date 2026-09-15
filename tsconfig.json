@@ -20,5 +20,5 @@
     "allowJs": false,
     "noEmit": true
   },
-  "include": ["src", "tests", "*.config.ts", "*.config.mjs"]
+  "include": ["src", "tests", "*.config.ts", "*.config.mjs", "*.setup.ts"]
 }
