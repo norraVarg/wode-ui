@@ -8,10 +8,26 @@
     "type": "git",
     "url": "git+https://github.com/norraVarg/wode-ui.git"
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles/index.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=20"
   },
   "scripts": {
+    "build": "pnpm run typecheck && vite build --config vite.lib.config.ts",
     "typecheck": "tsc --noEmit -p tsconfig.build.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -24,9 +40,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@microsoft/api-extractor": "^7.59.1",
     "@types/node": "^26.5.1",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
     "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -39,6 +57,9 @@
     "react-dom": "^19.0.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.70.0"
+    "typescript-eslint": "^8.70.0",
+    "vite": "^8.3.0",
+    "vite-plugin-dts": "^5.1.0",
+    "vite-plugin-static-copy": "^4.1.1"
   }
 }
