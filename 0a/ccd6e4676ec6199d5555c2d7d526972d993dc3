@@ -1,0 +1,33 @@
+jest.setup.ts
+  s_6f5fd009c6edc1::t_e4a2afc70b57cf 6-13,80-141
+src/components/Tooltip/Tooltip.ct.spec.tsx
+  s_6f5fd009c6edc1::t_106c40d379bddb 1-11
+src/components/Tooltip/Tooltip.story.tsx
+  s_6f5fd009c6edc1::t_30aa928c7033bb 1-19
+src/components/Tooltip/Tooltip.styles.ts
+  s_6f5fd009c6edc1::t_979bfa984efcd0 1-10
+src/components/Tooltip/Tooltip.test.tsx
+  s_6f5fd009c6edc1::t_3d0e5a496d62af 1-49
+src/components/Tooltip/Tooltip.tsx
+  s_6f5fd009c6edc1::t_788d15c48cdc4e 1-28
+src/components/Tooltip/index.ts
+  s_6f5fd009c6edc1::t_097f15e1b42325 1-2
+src/index.ts
+  s_6f5fd009c6edc1::t_2c6fc4ca422587 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0accd6e4676ec6199d5555c2d7d526972d993dc3",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
