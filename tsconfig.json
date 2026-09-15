@@ -18,7 +18,8 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowJs": false,
-    "noEmit": true
+    "noEmit": true,
+    "types": ["vite/client"]
   },
   "include": ["src", "tests", "*.config.ts", "*.config.mjs", "*.setup.ts"]
 }
