@@ -1,0 +1,37 @@
+package.json
+  s_6f5fd009c6edc1::t_090933b8a4189d 91
+pnpm-lock.yaml
+  s_6f5fd009c6edc1::t_56cc100498bf15 169-171,942-968,1283-1297,4978-4980,5537-5541,6643-6665,6949-6965,11367-11368,12000-12003
+src/components/Separator/Separator.ct.spec.tsx
+  s_6f5fd009c6edc1::t_3a2eed82586914 1-19
+src/components/Separator/Separator.story.tsx
+  s_6f5fd009c6edc1::t_9a59a4052fb0a2 1-21
+src/components/Separator/Separator.styles.ts
+  s_6f5fd009c6edc1::t_f3707eb5f77247 1-9
+src/components/Separator/Separator.test.tsx
+  s_6f5fd009c6edc1::t_331a56eda02c87 1-20
+src/components/Separator/Separator.tsx
+  s_6f5fd009c6edc1::t_e038461261b877 1-13
+src/components/Separator/index.ts
+  s_6f5fd009c6edc1::t_0c5ea8a9c3b141 1-2
+src/index.ts
+  s_6f5fd009c6edc1::t_3298da1a8418cf 3
+src/lib/types.ts
+  s_6f5fd009c6edc1::t_3324681a960074 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "68276c4d3176160bd548bce1ba71d5cb20a8a9d1",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
