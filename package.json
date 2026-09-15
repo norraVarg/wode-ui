@@ -27,7 +27,9 @@
     "node": ">=20"
   },
   "scripts": {
+    "dev": "ladle serve",
     "build": "pnpm run typecheck && vite build --config vite.lib.config.ts",
+    "build:ladle": "ladle build",
     "typecheck": "tsc --noEmit -p tsconfig.build.json",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -47,6 +49,7 @@
     "@babel/preset-react": "^7.29.7",
     "@babel/preset-typescript": "^7.29.7",
     "@eslint/js": "^10.0.1",
+    "@ladle/react": "^5.1.1",
     "@microsoft/api-extractor": "^7.59.1",
     "@playwright/test": "^1.63.0",
     "@tailwindcss/vite": "^4.3.3",

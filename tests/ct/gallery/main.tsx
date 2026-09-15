@@ -1,7 +1,7 @@
 import type { ComponentType } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { flushSync } from 'react-dom';
-import '../../../src/styles/index.css';
+import '../../../dev.css';
 
 // Story id scheme is ours to define (Playwright's gallery contract is
 // "yours to own"): "<ComponentFolder>/<ExportName>", matching our
