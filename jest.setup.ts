@@ -3,6 +3,14 @@ import { toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
+// Base UI's own documented escape hatch (internals/useAnimationsFinished.js):
+// every open/close transition (Tooltip, Popover, Menu, Select, Dialog, ...)
+// waits on real Element.getAnimations()/Web Animations API before considering
+// itself settled. jsdom has no real animation engine, so without this flag
+// that wait never resolves the way Base UI expects and tests hang for tens of
+// real seconds instead of failing fast.
+globalThis.BASE_UI_ANIMATIONS_DISABLED = true;
+
 // jsdom doesn't implement matchMedia at all - ThemeProvider calls it on every
 // render (even outside 'system' mode), so every test touching theming needs
 // this stub. Defaults to "no preference" (matches: false).
@@ -68,4 +76,66 @@ if (typeof Element !== 'undefined' && !Element.prototype.hasPointerCapture) {
 
 if (typeof Element !== 'undefined' && !Element.prototype.scrollIntoView) {
   Element.prototype.scrollIntoView = () => {};
+}
+
+// jsdom doesn't implement ResizeObserver at all - Floating UI's autoUpdate
+// (used internally by every Base UI component with a positioned popup:
+// Tooltip, Popover, Menu, Select, Combobox) uses it to track anchor/floating
+// element size changes. Without this, tests that open a positioned popup
+// hang indefinitely rather than failing loudly, since the missing observer
+// breaks an internal promise chain silently instead of throwing visibly.
+if (typeof window !== 'undefined' && !window.ResizeObserver) {
+  class ResizeObserverPolyfill implements ResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+  window.ResizeObserver = ResizeObserverPolyfill;
+}
+
+// jsdom doesn't implement IntersectionObserver either. Floating UI's
+// autoUpdate uses it to detect when the reference element scrolls out of
+// view, and without a real constructor it falls back to always reading a 0
+// ratio, which floating-ui's own comment says is deliberately throttled via
+// a 1000ms setTimeout retry loop "to prevent an infinite loop of updates".
+// This polyfill measurably reduced (but did not fully eliminate) the delay
+// on tests that mount an open, positioned Base UI popup - Tooltip's test
+// suite went from ~92s to ~64s with this in place. The remaining slowness
+// is accepted as a known jsdom/Floating UI limitation rather than chased
+// further: Jest tests for positioned popups assert logical state
+// (data-open, presence) instead of real visibility/layout, and Playwright
+// CT (a real browser) is the layer that verifies actual positioned
+// rendering - see each component's *.ct.spec.tsx.
+if (typeof window !== 'undefined' && !window.IntersectionObserver) {
+  class IntersectionObserverPolyfill implements IntersectionObserver {
+    readonly root: Element | Document | null = null;
+    readonly rootMargin: string = '';
+    readonly thresholds: ReadonlyArray<number> = [];
+    private readonly callback: IntersectionObserverCallback;
+
+    constructor(callback: IntersectionObserverCallback) {
+      this.callback = callback;
+    }
+
+    observe(target: Element) {
+      const rect = target.getBoundingClientRect();
+      const entry: IntersectionObserverEntry = {
+        isIntersecting: true,
+        intersectionRatio: 1,
+        target,
+        boundingClientRect: rect,
+        intersectionRect: rect,
+        rootBounds: null,
+        time: Date.now(),
+      };
+      queueMicrotask(() => this.callback([entry], this));
+    }
+
+    unobserve() {}
+    disconnect() {}
+    takeRecords(): IntersectionObserverEntry[] {
+      return [];
+    }
+  }
+  window.IntersectionObserver = IntersectionObserverPolyfill;
 }
