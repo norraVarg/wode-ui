@@ -4,3 +4,4 @@ export * from './components/Separator';
 export * from './components/Checkbox';
 export * from './components/Tooltip';
 export * from './components/Dialog';
+export * from './components/Layout';
