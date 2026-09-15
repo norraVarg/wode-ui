@@ -1,0 +1,33 @@
+jest.setup.ts
+  s_6f5fd009c6edc1::t_e093d8a9b7ad77 21-71
+src/components/Checkbox/Checkbox.ct.spec.tsx
+  s_6f5fd009c6edc1::t_d711f46c96e9ee 1-29
+src/components/Checkbox/Checkbox.story.tsx
+  s_6f5fd009c6edc1::t_2b5784f810c0ab 1-21
+src/components/Checkbox/Checkbox.styles.ts
+  s_6f5fd009c6edc1::t_936ecafdcf52af 1-15
+src/components/Checkbox/Checkbox.test.tsx
+  s_6f5fd009c6edc1::t_38089be514c854 1-62
+src/components/Checkbox/Checkbox.tsx
+  s_6f5fd009c6edc1::t_f8c42739070361 1-28
+src/components/Checkbox/index.ts
+  s_6f5fd009c6edc1::t_a38f02ed5e52cb 1-2
+src/index.ts
+  s_6f5fd009c6edc1::t_95b3405130d680 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "160870cb817fbc001aaec9c77e06baf1f4843a53",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
