@@ -1,0 +1,31 @@
+src/components/Popover/Popover.ct.spec.tsx
+  s_6f5fd009c6edc1::t_1a513de2b8b8c5 1-30
+src/components/Popover/Popover.story.tsx
+  s_6f5fd009c6edc1::t_7360043517e8fa 1-28
+src/components/Popover/Popover.styles.ts
+  s_6f5fd009c6edc1::t_d4596b9fc4b21f 1-21
+src/components/Popover/Popover.test.tsx
+  s_6f5fd009c6edc1::t_1972bedda0e9d2 1-86
+src/components/Popover/Popover.tsx
+  s_6f5fd009c6edc1::t_f0b8936e20fcdb 1-98
+src/components/Popover/index.ts
+  s_6f5fd009c6edc1::t_8579ac0c548d8f 1-7
+src/index.ts
+  s_6f5fd009c6edc1::t_862f7f3953416c 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6f74b2e9d33b7ee224211dc78d1c34287e6a8dbd",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
