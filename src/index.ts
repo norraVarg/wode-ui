@@ -5,3 +5,4 @@ export * from './components/Checkbox';
 export * from './components/Tooltip';
 export * from './components/Dialog';
 export * from './components/Layout';
+export * from './components/IconButton';
