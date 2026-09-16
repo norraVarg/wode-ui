@@ -139,3 +139,27 @@ if (typeof window !== 'undefined' && !window.IntersectionObserver) {
   }
   window.IntersectionObserver = IntersectionObserverPolyfill;
 }
+
+// jsdom's CSS engine (nwsapi) has a pathological recursive-evaluation bug
+// for the `:fullscreen` and `:modal` pseudo-classes specifically: per spec,
+// a fullscreen element is implicitly modal, so nwsapi's `:modal` matcher
+// checks `:fullscreen` - but jsdom has no native Fullscreen API, so that
+// check falls back to calling `element.matches(':fullscreen')` again,
+// re-entering the very same selector-matching path. Floating UI's
+// positioning logic (`isTopLayer`, from `@floating-ui/utils/dom`) calls
+// `element.matches(':modal')` on every position computation - even a
+// single one, e.g. from `autoUpdate`'s required initial call - which
+// measurably took 20-30+ real seconds per render of an open, anchored
+// popup (Tooltip, Popover, Select, Menu) before this fix. Short-circuiting
+// both to false is also accurate under jsdom: nothing can genuinely be
+// fullscreen or a native <dialog>/popover top-layer element there.
+if (typeof Element !== 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/unbound-method -- rebound via .call() below
+  const nativeMatches = Element.prototype.matches;
+  Element.prototype.matches = function (selector: string) {
+    if (selector === ':fullscreen' || selector === ':modal') {
+      return false;
+    }
+    return nativeMatches.call(this, selector);
+  };
+}

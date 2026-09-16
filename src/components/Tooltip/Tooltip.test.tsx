@@ -8,7 +8,14 @@ function Example(props: React.ComponentProps<typeof Tooltip.Root>) {
   return (
     <Tooltip.Root {...props}>
       <Tooltip.Trigger render={<button type="button">Hover me</button>} />
-      <Tooltip.Popup>Helpful information</Tooltip.Popup>
+      {/* disableAnchorTracking: whenever the popup is mounted open, Base
+          UI's Positioner sets up Floating UI's continuous anchor-tracking
+          (scroll/resize/layout-shift listeners via autoUpdate). Under
+          jsdom (no real layout engine) that loop doesn't converge and
+          blocks React's synchronous render-effect flush for 20-30+ real
+          seconds - this disables it, since the trigger never actually
+          moves in a test. */}
+      <Tooltip.Popup disableAnchorTracking>Helpful information</Tooltip.Popup>
     </Tooltip.Root>
   );
 }

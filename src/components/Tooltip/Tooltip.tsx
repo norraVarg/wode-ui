@@ -7,16 +7,23 @@ const Root = BaseTooltip.Root;
 const Trigger = BaseTooltip.Trigger;
 
 export type TooltipPopupProps = SimplifyClassName<BaseTooltip.Popup.Props> &
-  Pick<BaseTooltip.Positioner.Props, 'side' | 'sideOffset' | 'align' | 'alignOffset'>;
+  Pick<
+    BaseTooltip.Positioner.Props,
+    'side' | 'sideOffset' | 'align' | 'alignOffset' | 'disableAnchorTracking'
+  >;
 
 const Popup = React.forwardRef<HTMLDivElement, TooltipPopupProps>(
-  ({ className, side, sideOffset = 8, align, alignOffset, ...props }, ref) => (
+  (
+    { className, side, sideOffset = 8, align, alignOffset, disableAnchorTracking, ...props },
+    ref,
+  ) => (
     <BaseTooltip.Portal>
       <BaseTooltip.Positioner
         side={side}
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
+        disableAnchorTracking={disableAnchorTracking}
       >
         <BaseTooltip.Popup ref={ref} className={tooltip({ className })} {...props} />
       </BaseTooltip.Positioner>

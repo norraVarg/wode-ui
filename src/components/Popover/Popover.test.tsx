@@ -8,7 +8,14 @@ function Example(props: React.ComponentProps<typeof Popover.Root>) {
   return (
     <Popover.Root {...props}>
       <Popover.Trigger render={<Button variant="outline">Open popover</Button>} />
-      <Popover.Popup>
+      {/* disableAnchorTracking: whenever the popup is mounted open, Base
+          UI's Positioner sets up Floating UI's continuous anchor-tracking
+          (scroll/resize/layout-shift listeners via autoUpdate). Under
+          jsdom (no real layout engine) that loop doesn't converge and
+          blocks React's synchronous render-effect flush for 20-30+ real
+          seconds - this disables it, since the trigger never actually
+          moves in a test. */}
+      <Popover.Popup disableAnchorTracking>
         <Popover.IconClose />
         <Popover.Title>Notifications</Popover.Title>
         <Popover.Description>You have no new notifications.</Popover.Description>
@@ -36,13 +43,7 @@ describe('Popover', () => {
   });
 
   it('has no detectable accessibility violations while closed', async () => {
-    // Explicit timeout: mounting Popover's trigger still sets up Floating
-    // UI/Base UI's popover-tree bookkeeping even while closed, and axe's
-    // own DOM walk on top of that occasionally exceeds Jest's default
-    // 5000ms under full-suite CPU contention (parallel worker processes).
-    // Confirmed independent of the interaction tests removed above -
-    // still needed after they were dropped.
     const { container } = render(<Example />);
     expect(await axe(container)).toHaveNoViolations();
-  }, 15000);
+  });
 });
