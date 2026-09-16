@@ -8,3 +8,4 @@ export * from './components/Layout';
 export * from './components/IconButton';
 export * from './components/Switch';
 export * from './components/RadioGroup';
+export * from './components/TextField';
