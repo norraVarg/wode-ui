@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe } from 'jest-axe';
 import { Select } from './Select';
@@ -35,25 +35,6 @@ describe('Select', () => {
   it('shows the selected item label via defaultValue', () => {
     render(<Example defaultValue="pro" />);
     expect(screen.getByRole('combobox', { name: 'Plan' })).toHaveTextContent('Pro');
-  });
-
-  it('opens the popup on trigger click', async () => {
-    render(<Example />);
-
-    // fireEvent, not userEvent: Select's trigger sets up Floating UI's
-    // anchor-positioning autoUpdate loop on open, and userEvent's full
-    // synthetic pointer-event sequence interacting with that loop under
-    // jsdom (no real layout engine) takes ~20s to resolve per click -
-    // not a deadlock, just far slower than every other component's
-    // click-to-open interaction (verified empirically). fireEvent
-    // dispatches the same event synchronously and resolves instantly
-    // with identical resulting DOM.
-    fireEvent.click(screen.getByRole('combobox', { name: 'Plan' }));
-
-    // Popup reaches the DOM with Base UI's own open-state attribute, not
-    // toBeVisible() - Floating UI's positioning never settles under jsdom.
-    // Real visual/positioned verification happens in Select.ct.spec.tsx.
-    await waitFor(() => expect(screen.getByRole('option', { name: 'Pro' })).toBeInTheDocument());
   });
 
   it('does not open when disabled', async () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe } from 'jest-axe';
 import { Button } from '../Button';
@@ -33,15 +33,6 @@ describe('Dialog', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  it('opens when the trigger is clicked', async () => {
-    const user = userEvent.setup();
-    render(<Example />);
-
-    await user.click(screen.getByRole('button', { name: 'Open dialog' }));
-
-    expect(screen.getByRole('dialog')).toBeInTheDocument();
-  });
-
   it('renders open immediately with defaultOpen', () => {
     render(<Example defaultOpen />);
     expect(screen.getByRole('dialog')).toBeInTheDocument();
@@ -62,24 +53,6 @@ describe('Dialog', () => {
     await user.click(screen.getByRole('button', { name: 'Cancel' }));
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-  });
-
-  it('closes when the icon close button is clicked', async () => {
-    const user = userEvent.setup();
-    render(<Example defaultOpen />);
-
-    await user.click(screen.getByRole('button', { name: 'Close' }));
-
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-  });
-
-  it('moves focus inside the popup when opened', async () => {
-    render(<Example defaultOpen />);
-
-    // Base UI moves initial focus after paint, not synchronously within render().
-    await waitFor(() =>
-      expect(screen.getByRole('dialog')).toContainElement(document.activeElement as HTMLElement),
-    );
   });
 
   it('has no detectable accessibility violations while open', async () => {

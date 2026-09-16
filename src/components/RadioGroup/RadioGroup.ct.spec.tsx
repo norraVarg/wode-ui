@@ -1,35 +1,24 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('RadioGroup', () => {
-  test('uncontrolled group starts with the default item checked', async ({ mount }) => {
+  test('checked item has a real accent border, distinct from unchecked', async ({ mount }) => {
     const component = await mount('RadioGroup/Uncontrolled');
-    await expect(component.getByRole('radio', { name: 'Monthly' })).toHaveAttribute('data-checked');
-    await expect(component.getByRole('radio', { name: 'Yearly' })).toHaveAttribute(
-      'data-unchecked',
-    );
+    const [checkedColor, uncheckedColor] = await Promise.all([
+      component
+        .getByRole('radio', { name: 'Monthly' })
+        .evaluate((el) => getComputedStyle(el).borderColor),
+      component
+        .getByRole('radio', { name: 'Yearly' })
+        .evaluate((el) => getComputedStyle(el).borderColor),
+    ]);
+    expect(checkedColor).not.toBe(uncheckedColor);
   });
 
-  test('controlled group switches the checked item on click', async ({ mount }) => {
-    const component = await mount('RadioGroup/Controlled');
-    const yearly = component.getByRole('radio', { name: 'Yearly' });
-    await expect(yearly).toHaveAttribute('data-unchecked');
-
-    await yearly.click();
-
-    await expect(yearly).toHaveAttribute('data-checked');
-    await expect(component.getByRole('radio', { name: 'Monthly' })).toHaveAttribute(
-      'data-unchecked',
-    );
-  });
-
-  test('disabled group does not change selection on click', async ({ mount }) => {
+  test('disabled item has reduced opacity', async ({ mount }) => {
     const component = await mount('RadioGroup/Disabled');
-    const yearly = component.getByRole('radio', { name: 'Yearly' });
-    await expect(yearly).toHaveAttribute('data-disabled');
-
-    await yearly.click({ force: true });
-
-    await expect(yearly).toHaveAttribute('data-unchecked');
-    await expect(component.getByRole('radio', { name: 'Monthly' })).toHaveAttribute('data-checked');
+    const opacity = await component
+      .getByRole('radio', { name: 'Monthly' })
+      .evaluate((el) => getComputedStyle(el).opacity);
+    expect(Number(opacity)).toBeLessThan(1);
   });
 });

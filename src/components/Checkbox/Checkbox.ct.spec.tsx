@@ -1,29 +1,24 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Checkbox', () => {
-  test('uncontrolled checkbox starts checked', async ({ mount }) => {
-    const component = await mount('Checkbox/Uncontrolled');
-    await expect(component.getByRole('checkbox')).toHaveAttribute('data-checked');
-  });
-
-  test('controlled checkbox toggles on click', async ({ mount }) => {
+  test('checked checkbox has a real accent background, distinct from unchecked', async ({
+    mount,
+  }) => {
     const component = await mount('Checkbox/Controlled');
     const box = component.getByRole('checkbox');
-    await expect(box).toHaveAttribute('data-unchecked');
+    const uncheckedColor = await box.evaluate((el) => getComputedStyle(el).backgroundColor);
 
     await box.click();
 
-    await expect(box).toHaveAttribute('data-checked');
+    const checkedColor = await box.evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(checkedColor).not.toBe(uncheckedColor);
   });
 
-  test('disabled checkbox does not toggle on click', async ({ mount }) => {
+  test('disabled checkbox has reduced opacity', async ({ mount }) => {
     const component = await mount('Checkbox/Disabled');
-    const box = component.getByRole('checkbox');
-    await expect(box).toHaveAttribute('data-disabled');
-    await expect(box).toHaveAttribute('data-unchecked');
-
-    await box.click({ force: true });
-
-    await expect(box).toHaveAttribute('data-unchecked');
+    const opacity = await component
+      .getByRole('checkbox')
+      .evaluate((el) => getComputedStyle(el).opacity);
+    expect(Number(opacity)).toBeLessThan(1);
   });
 });

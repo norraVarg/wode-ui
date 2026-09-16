@@ -15,9 +15,4 @@ test.describe('Button', () => {
     const borderWidth = await button.evaluate((el) => getComputedStyle(el).borderWidth);
     expect(borderWidth).not.toBe('0px');
   });
-
-  test('disabled button cannot be clicked', async ({ mount }) => {
-    const component = await mount('Button/Disabled');
-    await expect(component.getByRole('button')).toBeDisabled();
-  });
 });

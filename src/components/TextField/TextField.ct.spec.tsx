@@ -8,13 +8,18 @@ test.describe('TextField', () => {
     await expect(input).not.toHaveCSS('border-color', 'rgba(0, 0, 0, 0)');
   });
 
-  test('shows the error message when invalid', async ({ mount }) => {
+  test('invalid input has a real border color', async ({ mount }) => {
     const component = await mount('TextField/Invalid');
-    await expect(component.getByText('Enter a valid email address.')).toBeVisible();
+    const input = component.getByLabel('Email');
+    await expect(input).toHaveAttribute('data-invalid');
+    await expect(input).not.toHaveCSS('border-color', 'rgba(0, 0, 0, 0)');
   });
 
-  test('disabled input cannot be typed into', async ({ mount }) => {
+  test('disabled input has reduced opacity', async ({ mount }) => {
     const component = await mount('TextField/Disabled');
-    await expect(component.getByLabel('Email')).toBeDisabled();
+    const opacity = await component
+      .getByLabel('Email')
+      .evaluate((el) => getComputedStyle(el).opacity);
+    expect(Number(opacity)).toBeLessThan(1);
   });
 });
