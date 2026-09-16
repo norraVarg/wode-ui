@@ -1,0 +1,31 @@
+src/components/RadioGroup/RadioGroup.ct.spec.tsx
+  s_6f5fd009c6edc1::t_dfa1e27f367a88 1-35
+src/components/RadioGroup/RadioGroup.story.tsx
+  s_6f5fd009c6edc1::t_2ae7fae01f3716 1-30
+src/components/RadioGroup/RadioGroup.styles.ts
+  s_6f5fd009c6edc1::t_107193ad202911 1-15
+src/components/RadioGroup/RadioGroup.test.tsx
+  s_6f5fd009c6edc1::t_94eb74dde5b24d 1-66
+src/components/RadioGroup/RadioGroup.tsx
+  s_6f5fd009c6edc1::t_a5cc30e536b9cf 1-27
+src/components/RadioGroup/index.ts
+  s_6f5fd009c6edc1::t_6fd971c48cae14 1-2
+src/index.ts
+  s_6f5fd009c6edc1::t_640664e57257c4 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b4dcc5ab5fa9b2172a5d2bfbaaaa47d8555b4d74",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
