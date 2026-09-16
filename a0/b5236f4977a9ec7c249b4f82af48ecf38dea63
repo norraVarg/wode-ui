@@ -1,0 +1,25 @@
+jest.setup.ts
+  s_6f5fd009c6edc1::t_e2ff6375bbc793 142-165
+src/components/Popover/Popover.test.tsx
+  s_6f5fd009c6edc1::t_0aadcf48409af7 11-18,48
+src/components/Tooltip/Tooltip.test.tsx
+  s_6f5fd009c6edc1::t_a97d1b3b0a465a 11-18
+src/components/Tooltip/Tooltip.tsx
+  s_6f5fd009c6edc1::t_3ecb8ce34f8f15 10-13,16-19,26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a0b5236f4977a9ec7c249b4f82af48ecf38dea63",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
