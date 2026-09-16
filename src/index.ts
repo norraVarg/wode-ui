@@ -10,3 +10,4 @@ export * from './components/Switch';
 export * from './components/RadioGroup';
 export * from './components/TextField';
 export * from './components/Select';
+export * from './components/Popover';
