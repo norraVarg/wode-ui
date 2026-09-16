@@ -1,0 +1,31 @@
+src/components/IconButton/IconButton.ct.spec.tsx
+  s_6f5fd009c6edc1::t_ede05fb9c38d2d 1-15
+src/components/IconButton/IconButton.story.tsx
+  s_6f5fd009c6edc1::t_4b7c22880b81ff 1-33
+src/components/IconButton/IconButton.styles.ts
+  s_6f5fd009c6edc1::t_bd521f27c94cfe 1-30
+src/components/IconButton/IconButton.test.tsx
+  s_6f5fd009c6edc1::t_5c0988774ef5e1 1-56
+src/components/IconButton/IconButton.tsx
+  s_6f5fd009c6edc1::t_d36fd6469e9c1f 1-19
+src/components/IconButton/index.ts
+  s_6f5fd009c6edc1::t_faca07eb26290e 1-2
+src/index.ts
+  s_6f5fd009c6edc1::t_cce502e2a7b9da 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c15b168010f2f51aa609a8c1862357df0b2ef0e2",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
