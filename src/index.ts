@@ -18,3 +18,4 @@ export * from './components/Toast';
 export * from './components/Avatar';
 export * from './components/Badge';
 export * from './components/Tabs';
+export * from './components/Accordion';
