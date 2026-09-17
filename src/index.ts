@@ -17,3 +17,4 @@ export * from './components/ProgressBar';
 export * from './components/Toast';
 export * from './components/Avatar';
 export * from './components/Badge';
+export * from './components/Tabs';
