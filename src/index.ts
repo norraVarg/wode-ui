@@ -15,3 +15,4 @@ export * from './components/Menu';
 export * from './components/Spinner';
 export * from './components/ProgressBar';
 export * from './components/Toast';
+export * from './components/Avatar';
