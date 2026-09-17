@@ -13,3 +13,4 @@ export * from './components/Select';
 export * from './components/Popover';
 export * from './components/Menu';
 export * from './components/Spinner';
+export * from './components/ProgressBar';
