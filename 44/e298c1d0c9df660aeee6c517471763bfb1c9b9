@@ -1,0 +1,31 @@
+src/components/Toast/Toast.ct.spec.tsx
+  s_6f5fd009c6edc1::t_32cadaba8c052b 1-11
+src/components/Toast/Toast.story.tsx
+  s_6f5fd009c6edc1::t_127e4182aef486 1-50
+src/components/Toast/Toast.styles.ts
+  s_6f5fd009c6edc1::t_18c34f1ab2adcc 1-25
+src/components/Toast/Toast.test.tsx
+  s_6f5fd009c6edc1::t_f7d84e3cb07b6d 1-68
+src/components/Toast/Toast.tsx
+  s_6f5fd009c6edc1::t_d8cf75720a841d 1-44
+src/components/Toast/index.ts
+  s_6f5fd009c6edc1::t_7c47222ba56657 1-2
+src/index.ts
+  s_6f5fd009c6edc1::t_28f79973777228 17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "44e298c1d0c9df660aeee6c517471763bfb1c9b9",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
