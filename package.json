@@ -1,6 +1,6 @@
 {
   "name": "wode-ui",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A mobile-first React component library built on Base UI and Tailwind CSS, with built-in light/dark theming.",
   "type": "module",
   "license": "MIT",
