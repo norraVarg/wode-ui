@@ -1,5 +1,11 @@
 # wode-ui
 
+## 0.1.1
+
+### Patch Changes
+
+- 88eae12: Remove the blocking `changeset-check` CI job. Upstream Changesets guidance recommends against a blocking CI check for missing changesets (it also inherently false-positives on every release commit); the non-blocking Changesets GitHub Bot is the recommended alternative.
+
 ## 0.1.0
 
 ### Minor Changes
