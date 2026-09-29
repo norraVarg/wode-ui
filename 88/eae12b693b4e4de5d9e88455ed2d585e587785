@@ -1,0 +1,19 @@
+.changeset/silly-otters-relax.md
+  s_6f5fd009c6edc1::t_21a62b343bc714 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "88eae12b693b4e4de5d9e88455ed2d585e587785",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
