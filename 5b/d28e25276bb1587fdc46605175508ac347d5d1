@@ -1,0 +1,16 @@
+CHANGELOG.md
+  h_2fa6c16ca81eb4 1-12
+package.json
+  h_2fa6c16ca81eb4 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "5bd28e25276bb1587fdc46605175508ac347d5d1",
+  "prompts": {},
+  "humans": {
+    "h_2fa6c16ca81eb4": {
+      "author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
