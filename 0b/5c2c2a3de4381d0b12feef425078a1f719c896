@@ -1,0 +1,21 @@
+.changeset/rude-buses-grow.md
+  s_6f5fd009c6edc1::t_a02431d147f0c9 1-5
+src/theme/ThemeProvider.test.tsx
+  s_6f5fd009c6edc1::t_7cd0a21a83e670 1,6-43,56-57,63-66,102-119
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0b5c2c2a3de4381d0b12feef425078a1f719c896",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
