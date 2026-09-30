@@ -1,5 +1,13 @@
 # wode-ui
 
+## 0.1.4
+
+### Patch Changes
+
+- 0b5c2c2: Add a test proving `ThemeProvider`'s `'system'` mode actually tracks a live OS color-scheme change, not just its initial value at mount.
+- 8d7f1b7: Bump `actions/checkout` and `actions/setup-node` from `v4` to `v7` in `ci.yml` and `release.yml`, clearing GitHub's Node 20 deprecation annotation on every run.
+- f0c8577: Add real installation and usage docs to the README: setup steps, the Tailwind class-scanning gotcha for consumers, `ThemeProvider`/`useTheme` usage, and a link to the live component demo.
+
 ## 0.1.3
 
 ### Patch Changes
