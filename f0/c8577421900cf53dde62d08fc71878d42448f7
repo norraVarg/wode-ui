@@ -1,0 +1,21 @@
+.changeset/tall-kings-drum.md
+  s_6f5fd009c6edc1::t_eaf7b9f6dd8d80 1-5
+README.md
+  s_6f5fd009c6edc1::t_dfacea274c5282 5-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f0c8577421900cf53dde62d08fc71878d42448f7",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
