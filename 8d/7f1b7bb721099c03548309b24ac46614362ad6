@@ -1,0 +1,23 @@
+.changeset/short-toys-jump.md
+  s_6f5fd009c6edc1::t_d770a3ecd73b49 1-5
+.github/workflows/ci.yml
+  s_6f5fd009c6edc1::t_553d267265b7ad 11,13,24,26,36,38,48,50,61,63
+.github/workflows/release.yml
+  s_6f5fd009c6edc1::t_787d8072754635 19,21,38,40,57,59,80,82,107,109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8d7f1b7bb721099c03548309b24ac46614362ad6",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
