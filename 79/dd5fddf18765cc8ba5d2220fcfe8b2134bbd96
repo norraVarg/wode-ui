@@ -1,0 +1,43 @@
+.github/workflows/ci.yml
+  s_6f5fd009c6edc1::t_3d8e3bad50b320 32,70
+.github/workflows/release.yml
+  s_6f5fd009c6edc1::t_4ddc8f5e47b525 64
+.ladle/components.tsx
+  s_6f5fd009c6edc1::t_605343824243da 2,4,7-20,27
+eslint.config.js
+  s_6f5fd009c6edc1::t_5482330499b01a 50
+jest.setup.ts
+  s_6f5fd009c6edc1::t_fa129b75bf3747 4-7,34-41,43-50,99-100,105,122-123,144,153-154,158-173,177-178,183
+package.json
+  s_6f5fd009c6edc1::t_f26999a48c20fb 34,36,94-95
+pnpm-lock.yaml
+  s_6f5fd009c6edc1::t_6b7557a3370cb9 175-177
+scripts/smoke-test-build.mjs
+  s_6f5fd009c6edc1::t_f24d0648928454 1-57
+src/components/Select/Select.test.tsx
+  s_6f5fd009c6edc1::t_14d71faf0ebd53 7
+src/components/Tooltip/Tooltip.test.tsx
+  s_6f5fd009c6edc1::t_c97080173eaa79 11-14
+src/theme/ThemeProvider.test.tsx
+  s_6f5fd009c6edc1::t_def9eed7daf17a 34
+tests/ct/gallery/main.tsx
+  s_6f5fd009c6edc1::t_17432474440cdd 30-35
+vite.lib.config.ts
+  s_6f5fd009c6edc1::t_e9a070311e556b 38-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "79dd5fddf18765cc8ba5d2220fcfe8b2134bbd96",
+  "prompts": {},
+  "sessions": {
+    "s_6f5fd009c6edc1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b91b211-cd58-4cd7-b4e3-a8ff95a8ddc0",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
