@@ -1,6 +1,10 @@
 import '@testing-library/jest-dom';
 import { toHaveNoViolations } from 'jest-axe';
 
+declare global {
+  var BASE_UI_ANIMATIONS_DISABLED: boolean | undefined;
+}
+
 expect.extend(toHaveNoViolations);
 
 // Base UI's own documented escape hatch (internals/useAnimationsFinished.js):
@@ -27,16 +31,23 @@ if (typeof window !== 'undefined' && !window.matchMedia) {
   });
 }
 
-// jsdom doesn't implement PointerEvent at all - Base UI's own click/press
-// handling dispatches real PointerEvents internally (for consistent
-// mouse/touch/pen behavior), so any interactive Base UI component - not
-// just Checkbox - needs this polyfilled to be clickable under Jest.
-// Pointer capture and scrollIntoView are jsdom gaps in the same family,
-// needed once components with drag-select or keyboard-scrolled lists
-// (Select, Menu, Combobox) land, so they're covered here too rather than
-// waiting to hit the same failure again per-component.
+// jsdom doesn't implement PointerEvent at all. Base UI's own click/press
+// handling dispatches real PointerEvents internally, for consistent
+// mouse/touch/pen behavior. Any interactive Base UI component needs this
+// polyfilled to be clickable under Jest - not just Checkbox.
+// Pointer capture and scrollIntoView are jsdom gaps in the same family.
+// They're covered here too, ahead of need, so a future component with
+// drag-select or keyboard-scrolled lists (Select, Menu, Combobox) doesn't
+// hit the same failure again.
 if (typeof window !== 'undefined' && !window.PointerEvent) {
-  class PointerEventPolyfill extends MouseEvent implements PointerEvent {
+  // Deliberately not `implements PointerEvent`: the DOM spec (and whichever
+  // TypeScript version happens to check this - project-pinned or an
+  // editor's own bundled version) keeps adding new PointerEvent properties
+  // (altitudeAngle/azimuthAngle, then persistentDeviceId, ...). Asserting
+  // full conformance here means this class breaks every time those types
+  // grow, for no real benefit - the cast below already tells TypeScript
+  // "trust this is a PointerEvent" at the one place it's actually used.
+  class PointerEventPolyfill extends MouseEvent {
     public pointerId: number;
     public width: number;
     public height: number;
@@ -85,12 +96,13 @@ if (typeof Element !== 'undefined' && !Element.prototype.scrollIntoView) {
 // hang indefinitely rather than failing loudly, since the missing observer
 // breaks an internal promise chain silently instead of throwing visibly.
 if (typeof window !== 'undefined' && !window.ResizeObserver) {
-  class ResizeObserverPolyfill implements ResizeObserver {
+  // Not `implements ResizeObserver` - see the PointerEventPolyfill comment above for why.
+  class ResizeObserverPolyfill {
     observe() {}
     unobserve() {}
     disconnect() {}
   }
-  window.ResizeObserver = ResizeObserverPolyfill;
+  window.ResizeObserver = ResizeObserverPolyfill as unknown as typeof window.ResizeObserver; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- redundant under this project's pinned TypeScript today (ResizeObserverPolyfill currently matches ResizeObserver exactly), but kept deliberately: a newer/editor TypeScript version with a larger ResizeObserver would need this cast, and removing it just to satisfy today's lint is what caused this exact class of breakage twice already.
 }
 
 // jsdom doesn't implement IntersectionObserver either. Floating UI's
@@ -107,7 +119,8 @@ if (typeof window !== 'undefined' && !window.ResizeObserver) {
 // CT (a real browser) is the layer that verifies actual positioned
 // rendering - see each component's *.ct.spec.tsx.
 if (typeof window !== 'undefined' && !window.IntersectionObserver) {
-  class IntersectionObserverPolyfill implements IntersectionObserver {
+  // Not `implements IntersectionObserver` - see the PointerEventPolyfill comment above for why.
+  class IntersectionObserverPolyfill {
     readonly root: Element | Document | null = null;
     readonly rootMargin: string = '';
     readonly thresholds: ReadonlyArray<number> = [];
@@ -128,7 +141,7 @@ if (typeof window !== 'undefined' && !window.IntersectionObserver) {
         rootBounds: null,
         time: Date.now(),
       };
-      queueMicrotask(() => this.callback([entry], this));
+      queueMicrotask(() => this.callback([entry], this as unknown as IntersectionObserver)); // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- same rationale as the window.IntersectionObserver assignment below: `this` only satisfies the callback's IntersectionObserver parameter by matching today's interface exactly, which isn't guaranteed under a different TypeScript version.
     }
 
     unobserve() {}
@@ -137,29 +150,35 @@ if (typeof window !== 'undefined' && !window.IntersectionObserver) {
       return [];
     }
   }
-  window.IntersectionObserver = IntersectionObserverPolyfill;
+  window.IntersectionObserver =
+    IntersectionObserverPolyfill as unknown as typeof window.IntersectionObserver; // eslint-disable-line @typescript-eslint/no-unnecessary-type-assertion -- same rationale as the window.ResizeObserver assignment above.
 }
 
 // jsdom's CSS engine (nwsapi) has a pathological recursive-evaluation bug
-// for the `:fullscreen` and `:modal` pseudo-classes specifically: per spec,
-// a fullscreen element is implicitly modal, so nwsapi's `:modal` matcher
-// checks `:fullscreen` - but jsdom has no native Fullscreen API, so that
-// check falls back to calling `element.matches(':fullscreen')` again,
-// re-entering the very same selector-matching path. Floating UI's
-// positioning logic (`isTopLayer`, from `@floating-ui/utils/dom`) calls
-// `element.matches(':modal')` on every position computation - even a
-// single one, e.g. from `autoUpdate`'s required initial call - which
-// measurably took 20-30+ real seconds per render of an open, anchored
-// popup (Tooltip, Popover, Select, Menu) before this fix. Short-circuiting
-// both to false is also accurate under jsdom: nothing can genuinely be
-// fullscreen or a native <dialog>/popover top-layer element there.
+// for the `:fullscreen` and `:modal` pseudo-classes. Per spec, a fullscreen
+// element is implicitly modal, so nwsapi's `:modal` matcher checks
+// `:fullscreen` too. But jsdom has no native Fullscreen API, so that check
+// falls back to calling `element.matches(':fullscreen')` again - re-entering
+// the very same selector-matching path.
+//
+// Floating UI's positioning logic (`isTopLayer`, from
+// `@floating-ui/utils/dom`) calls `element.matches(':modal')` on every
+// position computation, even a single one (e.g. from `autoUpdate`'s
+// required initial call). Before this fix, that measurably took 20-30+
+// real seconds per render of an open, anchored popup (Tooltip, Popover,
+// Select, Menu).
+//
+// Short-circuiting both to false is accurate under jsdom: nothing can
+// genuinely be fullscreen or a native <dialog>/popover top-layer element
+// there.
 if (typeof Element !== 'undefined') {
   // eslint-disable-next-line @typescript-eslint/unbound-method -- rebound via .call() below
   const nativeMatches = Element.prototype.matches;
-  Element.prototype.matches = function (selector: string) {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- redundant under this project's pinned TypeScript today (matches has a single plain signature here), but kept deliberately: a newer/editor TypeScript version declares Element.prototype.matches with extra tag-name-narrowing overloads (`this is HTMLElementTagNameMap[K]`, etc.) that this simple boolean-returning override can't satisfy without this cast - same pattern as the other polyfills above.
+  Element.prototype.matches = function (this: Element, selector: string) {
     if (selector === ':fullscreen' || selector === ':modal') {
       return false;
     }
     return nativeMatches.call(this, selector);
-  };
+  } as unknown as typeof Element.prototype.matches;
 }

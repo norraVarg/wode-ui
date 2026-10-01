@@ -35,7 +35,27 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      // use-sync-external-store is a transitive dependency of @base-ui/react
+      // (its CJS-only `/shim` entry does `require('react')` at module-eval
+      // time). Left un-externalized, Rolldown inlines that CJS source
+      // straight into dist/index.mjs and wraps the require() call in a
+      // synthetic shim that throws under real ESM: "Calling `require` for
+      // 'react' in an environment that doesn't expose the `require`
+      // function." Externalizing it here (both the bare specifier and the
+      // /shim subpath) stops it from being inlined at all - see the
+      // "dependencies" entry in package.json for why it also has to be
+      // declared there (pnpm won't let this package resolve a bare import
+      // to a dependency it doesn't declare itself, even one physically
+      // installed via @base-ui/react). Radix UI hit the identical bug in
+      // an identical Vite/Rolldown setup:
+      // https://github.com/radix-ui/primitives/issues/3856
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'use-sync-external-store',
+        /^use-sync-external-store\//,
+      ],
       output: {
         globals: { react: 'React', 'react-dom': 'ReactDOM' },
       },

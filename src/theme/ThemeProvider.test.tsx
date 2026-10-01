@@ -31,7 +31,7 @@ function mockSystemColorScheme(initialMatches: boolean) {
         listener = null;
       },
       dispatchEvent: () => false,
-    }) as MediaQueryList;
+    }) as unknown as MediaQueryList;
 
   return {
     triggerChange(next: boolean) {

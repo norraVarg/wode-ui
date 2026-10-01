@@ -4,9 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { axe } from 'jest-axe';
 import { Select } from './Select';
 
-// Select.Value can only resolve a selected item's display label from this
-// map - the popup's Select.Item children aren't mounted (and so can't be
-// read) until the popup is opened at least once, via the Portal.
+// PLAN_ITEMS: see the same constant's comment in Select.story.tsx.
 const PLAN_ITEMS: Record<string, string> = {
   free: 'Free',
   pro: 'Pro',

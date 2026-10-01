@@ -27,7 +27,12 @@ async function resolveStory(storyId: string): Promise<ComponentType<Record<strin
     throw new Error(`No story file found for component "${componentFolder}".`);
   }
 
-  const mod = await storyModules[filePath]();
+  const loadStory = storyModules[filePath];
+  if (!loadStory) {
+    throw new Error(`No story loader registered for "${filePath}".`);
+  }
+
+  const mod = await loadStory();
   const Story = mod[exportName];
   if (!Story) {
     throw new Error(`Story file for "${componentFolder}" has no export named "${exportName}".`);

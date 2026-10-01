@@ -31,7 +31,9 @@
     "dev": "ladle serve",
     "build": "pnpm run typecheck && vite build --config vite.lib.config.ts",
     "build:ladle": "ladle build",
+    "smoke": "node scripts/smoke-test-build.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.build.json",
+    "typecheck:all": "tsc --noEmit -p tsconfig.json",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ct": "playwright test -c playwright-ct.config.ts",
@@ -89,6 +91,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
-    "tailwind-variants": "^3.3.1"
+    "tailwind-variants": "^3.3.1",
+    "use-sync-external-store": "^1.7.0"
   }
 }

@@ -61,6 +61,7 @@ jobs:
           node-version-file: '.nvmrc'
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
+      - run: pnpm run smoke
       - name: Pack packages
         id: pack
         uses: changesets/action/pack@v2

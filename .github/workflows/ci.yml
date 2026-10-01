@@ -29,6 +29,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm run typecheck
+      - run: pnpm run typecheck:all
 
   test:
     runs-on: ubuntu-latest
@@ -66,4 +67,5 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
+      - run: pnpm run smoke
       - run: pnpm run build:ladle
